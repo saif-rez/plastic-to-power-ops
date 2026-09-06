@@ -201,7 +201,7 @@ function UserMenu() {
       <DropdownMenuTrigger asChild>
         <button className="flex items-center gap-3 rounded-full py-1 pl-1 pr-3 transition-colors hover:bg-muted">
           <span className="flex size-9 items-center justify-center rounded-full bg-gradient-primary text-sm font-bold text-primary-foreground">
-            {initials(first, last)}
+            {initials(first ?? "", last)}
           </span>
           <span className="hidden text-left leading-tight md:block">
             <span className="block text-sm font-semibold">{name}</span>
