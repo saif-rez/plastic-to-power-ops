@@ -29,12 +29,12 @@ export function FormDialog({
   open: boolean;
   onOpenChange: (o: boolean) => void;
   title: string;
-  description?: string;
+  description?: string | undefined;
   onSubmit: () => void;
-  loading?: boolean;
+  loading?: boolean | undefined;
   children: ReactNode;
-  submitLabel?: string;
-  wide?: boolean;
+  submitLabel?: string | undefined;
+  wide?: boolean | undefined;
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -89,12 +89,12 @@ export function TextField({
   label: string;
   value: string | number;
   onChange: (v: string) => void;
-  type?: string;
-  required?: boolean;
-  placeholder?: string;
-  className?: string;
-  step?: string;
-  min?: string | number;
+  type?: string | undefined;
+  required?: boolean | undefined;
+  placeholder?: string | undefined;
+  className?: string | undefined;
+  step?: string | undefined;
+  min?: string | number | undefined;
 }) {
   return (
     <Field label={label} className={className}>
@@ -123,8 +123,8 @@ export function SelectField({
   value: string;
   onChange: (v: string) => void;
   options: { value: string; label: string }[];
-  className?: string;
-  placeholder?: string;
+  className?: string | undefined;
+  placeholder?: string | undefined;
 }) {
   return (
     <Field label={label} className={className}>

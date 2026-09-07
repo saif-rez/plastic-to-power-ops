@@ -22,8 +22,8 @@ export function PageHeader({
   actions,
 }: {
   title: string;
-  description?: string;
-  actions?: ReactNode;
+  description?: string | undefined;
+  actions?: ReactNode | undefined;
 }) {
   return (
     <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between animate-fade-in">
@@ -48,11 +48,11 @@ export function StatCard({
 }: {
   title: string;
   value: ReactNode;
-  hint?: ReactNode;
+  hint?: ReactNode | undefined;
   icon: LucideIcon;
-  tone?: "primary" | "accent" | "success" | "warning" | "info" | "destructive";
-  trend?: number;
-  className?: string;
+  tone?: "primary" | "accent" | "success" | "warning" | "info" | "destructive" | undefined;
+  trend?: number | undefined;
+  className?: string | undefined;
 }) {
   const tones: Record<string, string> = {
     primary: "bg-primary/10 text-primary",
@@ -105,8 +105,8 @@ export function SearchInput({
 }: {
   value: string;
   onChange: (v: string) => void;
-  placeholder?: string;
-  className?: string;
+  placeholder?: string | undefined;
+  className?: string | undefined;
 }) {
   return (
     <div className={cn("relative w-full sm:max-w-xs", className)}>
@@ -132,7 +132,7 @@ const toneClass: Record<Tone, string> = {
   accent: "border-accent/30 bg-accent/12 text-accent",
 };
 
-export function StatusBadge({ tone, children, dot = true, className }: { tone: Tone; children: ReactNode; dot?: boolean; className?: string }) {
+export function StatusBadge({ tone, children, dot = true, className }: { tone: Tone; children: ReactNode; dot?: boolean | undefined; className?: string }) {
   return (
     <Badge variant="outline" className={cn("gap-1.5 rounded-full px-2.5 py-0.5 font-semibold", toneClass[tone], className)}>
       {dot && <span className="size-1.5 rounded-full bg-current" />}
@@ -160,7 +160,7 @@ export function stockStatus(quantity: number, minStock: number): { label: string
 }
 
 /* ---------- Empty state ---------- */
-export function EmptyState({ icon: Icon, title, description, action }: { icon: LucideIcon; title: string; description?: string; action?: ReactNode }) {
+export function EmptyState({ icon: Icon, title, description, action }: { icon: LucideIcon; title: string; description?: string | undefined; action?: ReactNode }) {
   return (
     <div className="flex flex-col items-center justify-center rounded-xl border border-dashed py-14 text-center animate-fade-in">
       <div className="flex size-12 items-center justify-center rounded-xl bg-muted text-muted-foreground">
@@ -196,9 +196,9 @@ export function ConfirmDelete({
   open: boolean;
   onOpenChange: (o: boolean) => void;
   onConfirm: () => void;
-  title?: string;
-  description?: string;
-  loading?: boolean;
+  title?: string | undefined;
+  description?: string | undefined;
+  loading?: boolean | undefined;
 }) {
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
@@ -221,7 +221,7 @@ export function ConfirmDelete({
 }
 
 /* ---------- Card section ---------- */
-export function Section({ title, description, actions, children, className }: { title?: string; description?: string; actions?: ReactNode; children: ReactNode; className?: string }) {
+export function Section({ title, description, actions, children, className }: { title?: string | undefined; description?: string | undefined; actions?: ReactNode | undefined; children: ReactNode; className?: string }) {
   return (
     <section className={cn("surface-card overflow-hidden", className)}>
       {(title || actions) && (
