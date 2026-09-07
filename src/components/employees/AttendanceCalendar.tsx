@@ -8,7 +8,7 @@ import { formatHours, formatTime } from "@/lib/format";
 
 type Att = { work_date: string; clock_in: string; clock_out: string | null; hours: number | null };
 
-export function AttendanceCalendar({ attendance, month, onMonthChange }: { attendance: Att[]; month?: Date; onMonthChange?: (d: Date) => void }) {
+export function AttendanceCalendar({ attendance, month, onMonthChange }: { attendance: Att[]; month?: Date | undefined; onMonthChange?: (d: Date) => void }) {
   const [internal, setInternal] = useState(new Date());
   const current = month ?? internal;
   const setMonth = (d: Date) => (onMonthChange ? onMonthChange(d) : setInternal(d));

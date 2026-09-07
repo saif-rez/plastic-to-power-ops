@@ -132,7 +132,7 @@ const toneClass: Record<Tone, string> = {
   accent: "border-accent/30 bg-accent/12 text-accent",
 };
 
-export function StatusBadge({ tone, children, dot = true, className }: { tone: Tone; children: ReactNode; dot?: boolean; className?: string }) {
+export function StatusBadge({ tone, children, dot = true, className }: { tone: Tone; children: ReactNode; dot?: boolean | undefined; className?: string }) {
   return (
     <Badge variant="outline" className={cn("gap-1.5 rounded-full px-2.5 py-0.5 font-semibold", toneClass[tone], className)}>
       {dot && <span className="size-1.5 rounded-full bg-current" />}
@@ -160,7 +160,7 @@ export function stockStatus(quantity: number, minStock: number): { label: string
 }
 
 /* ---------- Empty state ---------- */
-export function EmptyState({ icon: Icon, title, description, action }: { icon: LucideIcon; title: string; description?: string; action?: ReactNode }) {
+export function EmptyState({ icon: Icon, title, description, action }: { icon: LucideIcon; title: string; description?: string | undefined; action?: ReactNode }) {
   return (
     <div className="flex flex-col items-center justify-center rounded-xl border border-dashed py-14 text-center animate-fade-in">
       <div className="flex size-12 items-center justify-center rounded-xl bg-muted text-muted-foreground">
@@ -221,7 +221,7 @@ export function ConfirmDelete({
 }
 
 /* ---------- Card section ---------- */
-export function Section({ title, description, actions, children, className }: { title?: string; description?: string; actions?: ReactNode; children: ReactNode; className?: string }) {
+export function Section({ title, description, actions, children, className }: { title?: string | undefined; description?: string | undefined; actions?: ReactNode | undefined; children: ReactNode; className?: string }) {
   return (
     <section className={cn("surface-card overflow-hidden", className)}>
       {(title || actions) && (
