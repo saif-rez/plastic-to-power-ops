@@ -22,8 +22,8 @@ export function PageHeader({
   actions,
 }: {
   title: string;
-  description?: string;
-  actions?: ReactNode;
+  description?: string | undefined;
+  actions?: ReactNode | undefined;
 }) {
   return (
     <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between animate-fade-in">
@@ -48,11 +48,11 @@ export function StatCard({
 }: {
   title: string;
   value: ReactNode;
-  hint?: ReactNode;
+  hint?: ReactNode | undefined;
   icon: LucideIcon;
-  tone?: "primary" | "accent" | "success" | "warning" | "info" | "destructive";
-  trend?: number;
-  className?: string;
+  tone?: "primary" | "accent" | "success" | "warning" | "info" | "destructive" | undefined;
+  trend?: number | undefined;
+  className?: string | undefined;
 }) {
   const tones: Record<string, string> = {
     primary: "bg-primary/10 text-primary",
@@ -105,8 +105,8 @@ export function SearchInput({
 }: {
   value: string;
   onChange: (v: string) => void;
-  placeholder?: string;
-  className?: string;
+  placeholder?: string | undefined;
+  className?: string | undefined;
 }) {
   return (
     <div className={cn("relative w-full sm:max-w-xs", className)}>
@@ -196,9 +196,9 @@ export function ConfirmDelete({
   open: boolean;
   onOpenChange: (o: boolean) => void;
   onConfirm: () => void;
-  title?: string;
-  description?: string;
-  loading?: boolean;
+  title?: string | undefined;
+  description?: string | undefined;
+  loading?: boolean | undefined;
 }) {
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
