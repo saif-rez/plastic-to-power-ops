@@ -184,7 +184,7 @@ function ProductsPage() {
                   ].map(([v, l]) => (
                     <button
                       key={v}
-                      onClick={() => setFilter(v)}
+                      onClick={() => setFilter(v ?? "all")}
                       className={`rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors ${filter === v ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
                     >
                       {l}

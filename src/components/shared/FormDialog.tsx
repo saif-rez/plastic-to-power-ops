@@ -66,7 +66,7 @@ export function FormDialog({
   );
 }
 
-export function Field({ label, children, className }: { label: string; children: ReactNode; className?: string }) {
+export function Field({ label, children, className }: { label: string; children: ReactNode; className?: string | undefined }) {
   return (
     <div className={cn("space-y-1.5", className)}>
       <Label>{label}</Label>

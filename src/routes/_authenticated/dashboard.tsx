@@ -101,7 +101,7 @@ function ChartTip({ active, payload, label, unit = "€" }: { active?: boolean; 
     <div className="rounded-lg border bg-popover px-3 py-2 text-xs shadow-card">
       <p className="font-semibold">{label}</p>
       <p className="text-muted-foreground">
-        {formatNumber(payload[0].value)} {unit}
+        {formatNumber(payload[0]?.value)} {unit}
       </p>
     </div>
   );
@@ -114,7 +114,7 @@ function DashboardPage() {
   return <AdminDashboard name={profile?.full_name} />;
 }
 
-function AdminDashboard({ name }: { name?: string }) {
+function AdminDashboard({ name }: { name?: string | undefined }) {
   const { data, isLoading } = useDashboard();
   const firstName = name?.split(" ")[0];
 
@@ -217,8 +217,8 @@ function AdminDashboard({ name }: { name?: string }) {
                 </div>
                 <div className="text-right">
                   <p className="font-semibold tabular-nums">{formatCurrency(inv.total)}</p>
-                  <StatusBadge tone={invoiceStatus[inv.status].tone} dot={false} className="mt-0.5 px-2 py-0 text-[10px]">
-                    {invoiceStatus[inv.status].label}
+                  <StatusBadge tone={invoiceStatus[inv.status]?.tone ?? "muted"} dot={false} className="mt-0.5 px-2 py-0 text-[10px]">
+                    {invoiceStatus[inv.status]?.label ?? inv.status}
                   </StatusBadge>
                 </div>
               </li>
