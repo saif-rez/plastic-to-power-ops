@@ -1,3 +1,4 @@
+import { fr } from "date-fns/locale";
 import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -179,7 +180,7 @@ function AdminEmployees() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 stagger-children">
         <StatCard title="Total employés" value={employees.length} hint="Effectif enregistré" icon={Users} tone="primary" />
         <StatCard title="Présents aujourd'hui" value={todayRows.length} hint={`${todayRows.filter((a) => !a.clock_out).length} encore sur site`} icon={UserCheck} tone="success" />
-        <StatCard title="Heures du mois" value={formatHours(monthTotal)} hint={format(month, "MMMM yyyy")} icon={Clock} tone="info" />
+        <StatCard title="Heures du mois" value={formatHours(monthTotal)} hint={format(month, "MMMM yyyy", { locale: fr })} icon={Clock} tone="info" />
         <StatCard title="Jours pointés" value={attendance.length} hint="Sur le mois affiché" icon={CalendarDays} tone="accent" />
       </div>
 
@@ -274,7 +275,7 @@ function AdminEmployees() {
         </TabsContent>
 
         <TabsContent value="month" className="mt-4">
-          <Section title={`Heures — ${format(month, "MMMM yyyy")}`} description="Total par employé sur le mois sélectionné" className="animate-fade-up">
+          <Section title={`Heures — ${format(month, "MMMM yyyy", { locale: fr })}`} description="Total par employé sur le mois sélectionné" className="animate-fade-up">
             <div className="flex items-center gap-2 border-b px-5 py-3">
               <Button variant="outline" size="sm" onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() - 1, 1))}>
                 Mois précédent
