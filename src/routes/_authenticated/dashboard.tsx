@@ -144,7 +144,7 @@ function AdminDashboard({ name }: { name?: string | undefined }) {
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
-        <Section title="Coût énergétique mensuel" description="6 derniers mois, toutes énergies" className="lg:col-span-2 animate-fade-up">
+        <Section title="Coût énergétique mensuel" description="6 derniers mois, toutes énergies" className="lg:col-span-2 animate-fade-up self-start">
           <div className="h-72 px-2 pb-4 pt-6">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={data?.energySeries ?? []}>
@@ -164,8 +164,8 @@ function AdminDashboard({ name }: { name?: string | undefined }) {
           </div>
         </Section>
 
-        <Section title="Activité récente" className="animate-fade-up">
-          <ul className="divide-y">
+        <Section title="Activité récente" className="animate-fade-up self-start">
+          <ul className="max-h-[22rem] divide-y overflow-y-auto scrollbar-thin">
             {data?.activity.map((a) => (
               <li key={a.id} className="flex gap-3 px-5 py-3.5 text-sm transition-colors hover:bg-muted/50">
                 <span className={`mt-1.5 size-2 shrink-0 rounded-full ${kindTone[a.kind] ?? "bg-muted-foreground"}`} />

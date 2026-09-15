@@ -172,7 +172,7 @@ function EnergyPage() {
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" vertical={false} />
                     <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} interval="preserveStartEnd" />
-                    <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} width={50} tickFormatter={(v) => `${Math.round(v / 1000)}k€`} />
+                    <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} width={50} tickFormatter={(v: number) => (v >= 1000 ? `${(v / 1000).toFixed(v >= 10000 ? 0 : 1)} k€` : `${v} €`)} />
                     <Tooltip
                       formatter={(v: number) => [formatCurrency(v), "Coût"]}
                       contentStyle={{ background: "var(--color-popover)", border: "1px solid var(--color-border)", borderRadius: 12, fontSize: 12 }}
